@@ -1,9 +1,5 @@
 @import 'tailwindcss';
 
-html {
-  font-size: 62.5%;
-}
-
 :root {
   --color-blue-primary: #0500ff;
   --color-blue10: #edeffb;
@@ -15,6 +11,8 @@ html {
   --color-gray00: #f0f0f0;
 
   --color-white: #ffffff;
+
+  --shadow-1: 0px 2px 8px 0px #00000033;
 
   --font-roboto: 'Roboto', sans-serif;
 
@@ -63,6 +61,8 @@ html {
   --color-gray00: var(--color-gray00);
   --color-white: var(--color-white);
 
+  --shadow-1: var(--shadow-1);
+
   --font-roboto: var(--font-roboto);
 
   --font-weight-regular: var(--font-weight-regular);
@@ -92,4 +92,22 @@ html {
   --spacing-xl: var(--spacing-xl);
   --spacing-xxl: var(--spacing-xxl);
   --spacing-xxxl: var(--spacing-xxxl);
+}
+
+@layer base {
+  h1 {
+    font-family: var(--font-roboto);
+    font-style: normal;
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  width: 100dvw;
+  height: 100dvh;
 }
