@@ -12,7 +12,7 @@
 
   --color-white: #ffffff;
 
-  --shadow-1: 0px 2px 8px 0px #00000033;
+  --shadow-custom-1: 0px 2px 8px 0px #00000033;
 
   --font-helveticaneue: var(--font-helveticaneue);
   --font-roboto: var(--font-roboto);
@@ -62,7 +62,7 @@
   --color-gray00: var(--color-gray00);
   --color-white: var(--color-white);
 
-  --shadow-1: var(--shadow-1);
+  --shadow-custom-1: var(--shadow-custom-1);
 
   --font-helveticaneue: var(--font-helveticaneue), sans-serif;
   --font-roboto: var(--font-roboto), sans-serif;
@@ -98,7 +98,9 @@
 
 * {
   box-sizing: border-box;
+
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -113,7 +115,7 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: var(--font-helveticaneue), var(--font-roboto);
+  font-family: var(--font-roboto);
 }
 
 a {
@@ -123,19 +125,19 @@ a {
 
 @layer base {
   h1 {
-    font-family: var(--font-helveticaneue), var(--font-roboto);
+    font-family: var(--font-roboto);
     font-style: normal;
     font-weight: var(--font-weight-medium);
   }
 
   h2 {
-    font-family: var(--font-helveticaneue), var(--font-roboto);
+    font-family: var(--font-roboto);
     font-style: normal;
     font-weight: var(--font-weight-medium);
   }
 
   p {
-    font-family: var(--font-helveticaneue), var(--font-roboto);
+    font-family: var(--font-roboto);
     font-style: normal;
     font-weight: var(--font-weight-regular);
   }
