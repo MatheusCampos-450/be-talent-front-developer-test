@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
 import '@/shared/styles/globals.css';
-import { roboto } from '@/shared/lib/fonts';
+import { roboto, helveticaneue } from '@/shared/lib/fonts';
+
 import Header from '@/shared/components/Header';
 
 export const metadata: Metadata = {
@@ -16,8 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${roboto.variable} antialiased`}>
+      <body
+        className={`${helveticaneue.variable} ${roboto.variable} antialiased`}
+      >
         <Header />
+
         {children}
       </body>
     </html>

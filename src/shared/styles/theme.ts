@@ -1,6 +1,7 @@
 const theme = {
   font: {
     family: {
+      helveticaneue: 'var(--font-helveticaneue)',
       roboto: 'var(--font-roboto)',
     },
     weight: {
