@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { searchInputContainer, searchInput } from './styles';
-import SearchIcon from '../SearchIcon';
+import SearchIcon from '../../assets/SearchIcon';
 
 function SearchInput() {
   return (

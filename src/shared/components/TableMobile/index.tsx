@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import ArrowUpIcon from '../ArrowUpIcon';
-import ArrowDownIcon from '../ArrowDownIcon';
+
+import ArrowUpIcon from '../../assets/ArrowUpIcon';
+import ArrowDownIcon from '../../assets/ArrowDownIcon';
 
 export interface Employee {
   id: string;

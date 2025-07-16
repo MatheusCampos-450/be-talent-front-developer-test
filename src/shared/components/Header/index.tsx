@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BeTalentLogo from '../BeTalentLogo';
+import BeTalentLogo from '../../assets/BeTalentLogo';
 import { headerStyled } from './styles';
 
 function Header() {
