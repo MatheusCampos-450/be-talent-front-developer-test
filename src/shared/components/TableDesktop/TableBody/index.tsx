@@ -1,36 +1,9 @@
 import React from 'react';
 import { tableCellStyles } from '../styles';
+import { TableBodyProps } from './types';
+import { formatPhoneNumber } from '@/shared/utils/format-phone-number';
 
-export interface Employee {
-  id: string;
-  name: string;
-  photoUrl: string;
-  role: string;
-  admissionDate: string;
-  phone: string;
-}
-
-export const employees: Employee[] = [
-  {
-    id: '1',
-    name: 'Giovana L. Arruda',
-    photoUrl: 'https://i.pravatar.cc/100?img=1',
-    role: 'Front-end',
-    admissionDate: '00/00/0000',
-    phone: '+55 (55) 55555-5555',
-  },
-  {
-    id: '2',
-    name: 'Vanessa Machado',
-    photoUrl: 'https://i.pravatar.cc/100?img=2',
-    role: 'Front-end',
-    admissionDate: '00/00/0000',
-    phone: '+55 (55) 55555-5555',
-  },
-  // ... outros
-];
-
-function TableBody() {
+function TableBody({ employees }: TableBodyProps) {
   return (
     <tbody>
       {employees.map((emp) => (
@@ -41,7 +14,7 @@ function TableBody() {
             })}
           >
             <img
-              src={emp.photoUrl}
+              src={emp.image}
               alt={emp.name}
               className="h-[3.4rem] w-[3.4rem] rounded-full"
             />
@@ -60,7 +33,7 @@ function TableBody() {
               className: '',
             })}
           >
-            {emp.role}
+            {emp.job}
           </th>
 
           <th
@@ -68,7 +41,7 @@ function TableBody() {
               className: '',
             })}
           >
-            {emp.admissionDate}
+            {new Date(emp.admission_date).toLocaleDateString('pt-BR')}
           </th>
 
           <th
@@ -76,7 +49,7 @@ function TableBody() {
               className: 'pr-lg! w-[19rem]',
             })}
           >
-            {emp.phone}
+            {formatPhoneNumber(emp.phone)}
           </th>
         </tr>
       ))}

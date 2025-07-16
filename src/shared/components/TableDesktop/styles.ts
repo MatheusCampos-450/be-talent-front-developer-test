@@ -8,6 +8,10 @@ export const tableHeaderStyles = tv({
   base: 'bg-blue-primary h-[4.7rem] w-full rounded-t-[0.8rem]',
 });
 
-export const tableCellStyles = tv({
+export const tableHeaderCellStyles = tv({
   base: 'text-md pr-xxs overflow-hidden text-start font-medium text-ellipsis whitespace-nowrap',
+});
+
+export const tableCellStyles = tv({
+  base: 'text-md pr-xxs font-regular overflow-hidden text-start text-ellipsis whitespace-nowrap',
 });

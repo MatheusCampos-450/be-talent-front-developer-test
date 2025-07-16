@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { tableHeaderStyles, tableCellStyles } from '../styles';
+import { tableHeaderStyles, tableHeaderCellStyles } from '../styles';
 
 function TableHeader() {
   return (
     <thead className={tableHeaderStyles()}>
       <tr className="shadow-custom-1 w-full rounded-t-[0.8rem]">
         <th
-          className={tableCellStyles({
+          className={tableHeaderCellStyles({
             className: 'pl-lg w-[10rem] rounded-tl-[0.8rem] text-white',
           })}
         >
@@ -15,7 +15,7 @@ function TableHeader() {
         </th>
 
         <th
-          className={tableCellStyles({
+          className={tableHeaderCellStyles({
             className: 'text-white',
           })}
         >
@@ -23,7 +23,7 @@ function TableHeader() {
         </th>
 
         <th
-          className={tableCellStyles({
+          className={tableHeaderCellStyles({
             className: 'text-white',
           })}
         >
@@ -31,7 +31,7 @@ function TableHeader() {
         </th>
 
         <th
-          className={tableCellStyles({
+          className={tableHeaderCellStyles({
             className: 'text-white',
           })}
         >
@@ -39,7 +39,7 @@ function TableHeader() {
         </th>
 
         <th
-          className={tableCellStyles({
+          className={tableHeaderCellStyles({
             className: 'pr-lg! w-[19rem] rounded-tr-[0.8rem] text-white',
           })}
         >

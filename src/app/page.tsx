@@ -1,15 +1,45 @@
 'use client';
 
+import { container, Registry } from '@/@core/infra/container-registry';
+import { ListEmployeesUseCase } from '@/@core/application/employee/list-employees.use-case';
+
+import { useIsMobile } from '@/shared/hooks/useIsMobile';
+
 import SearchInput from '@/shared/components/SearchInput';
 
 import TableRoot from '@/shared/components/TableDesktop/TableRoot';
 import TableHeader from '@/shared/components/TableDesktop/TableHeader';
 import TableBody from '@/shared/components/TableDesktop/TableBody';
-import { useIsMobile } from '@/shared/hooks/useIsMobile';
 import TableMobile from '@/shared/components/TableMobile';
+import { useEffect, useState } from 'react';
+import { EmployeeProps } from '@/@core/domain/entities/employee';
+
+const listEmployeesUseCase = container.get<ListEmployeesUseCase>(
+  Registry.ListEmployeesUseCase,
+);
 
 export default function Home() {
+  const [search, setSearch] = useState<string>('');
+  const [employees, setEmployees] = useState<EmployeeProps[]>([]);
+
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const getEmployees = async () => {
+      const employees = await listEmployeesUseCase.execute();
+
+      setEmployees(employees);
+    };
+
+    getEmployees();
+  }, []);
+
+  const employeesFiltered = employees.filter(
+    (employee) =>
+      employee.job.toLowerCase().includes(search.toLowerCase()) ||
+      employee.name.toLowerCase().includes(search.toLowerCase()) ||
+      employee.phone.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div className="pt-lg px-sm bg-gray00 flex h-full w-full flex-col items-center justify-start">
@@ -18,15 +48,15 @@ export default function Home() {
           Funcionários
         </h1>
 
-        <SearchInput />
+        <SearchInput search={search} setSearch={setSearch} />
       </div>
 
       {isMobile ? (
-        <TableMobile />
+        <TableMobile employees={employeesFiltered} />
       ) : (
         <TableRoot className="mt-lg">
           <TableHeader />
-          <TableBody />
+          <TableBody employees={employeesFiltered} />
         </TableRoot>
       )}
     </div>

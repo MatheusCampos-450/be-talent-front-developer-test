@@ -4,40 +4,13 @@ import React, { useState } from 'react';
 
 import ArrowUpIcon from '../../assets/ArrowUpIcon';
 import ArrowDownIcon from '../../assets/ArrowDownIcon';
+import { TableMobileProps } from './types';
+import { formatPhoneNumber } from '@/shared/utils/format-phone-number';
 
-export interface Employee {
-  id: string;
-  name: string;
-  photoUrl: string;
-  role: string;
-  admissionDate: string;
-  phone: string;
-}
+function TableMobile({ employees }: TableMobileProps) {
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
-export const employees: Employee[] = [
-  {
-    id: '1',
-    name: 'Giovana L. Arruda',
-    photoUrl: 'https://i.pravatar.cc/100?img=1',
-    role: 'Front-end',
-    admissionDate: '00/00/0000',
-    phone: '+55 (55) 55555-5555',
-  },
-  {
-    id: '2',
-    name: 'Vanessa Machado',
-    photoUrl: 'https://i.pravatar.cc/100?img=2',
-    role: 'Front-end',
-    admissionDate: '00/00/0000',
-    phone: '+55 (55) 55555-5555',
-  },
-  // ... outros
-];
-
-function TableMobile() {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const toggleCard = (id: string) => {
+  const toggleCard = (id: number) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
@@ -64,7 +37,7 @@ function TableMobile() {
             >
               <div className="flex items-center">
                 <img
-                  src={emp.photoUrl}
+                  src={emp.image}
                   alt={emp.name}
                   className="mr-[2.4rem] h-[3.4rem] w-[3.4rem] rounded-full"
                 />
@@ -78,14 +51,15 @@ function TableMobile() {
             {isOpen && (
               <div className="flex h-[14rem] w-full flex-col items-center justify-center gap-[1.5rem] leading-7">
                 <div className="border-gray10 text-md flex w-full justify-between border-b border-dashed">
-                  <span className="font-medium">Cargo: </span> {emp.role}
+                  <span className="font-medium">Cargo: </span> {emp.job}
                 </div>
                 <div className="border-gray10 text-md flex w-full justify-between border-b border-dashed">
                   <span className="font-medium">Data de admissão: </span>{' '}
-                  {emp.admissionDate}
+                  {new Date(emp.admission_date).toLocaleDateString('pt-BR')}
                 </div>
                 <div className="border-gray10 text-md flex w-full justify-between border-b border-dashed">
-                  <span className="font-medium">Telefone: </span> {emp.phone}
+                  <span className="font-medium">Telefone: </span>{' '}
+                  {formatPhoneNumber(emp.phone)}
                 </div>
               </div>
             )}
