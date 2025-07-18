@@ -36,7 +36,6 @@ Aqui você irá encontrar algumas informações relevantes a certa desse reposit
 - EsLint
 - Prettier
 - Json-server
-- Vercel
 
 <br>
 
